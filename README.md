@@ -29,7 +29,7 @@ A responsive weather application built with React that allows users to search fo
    ![Iphone 12](https://github.com/teodelcastillo/react-weather-app/blob/main/weather-app/src/assets/iphone12.png)
    
 ####* IPad Air
-    ![Ipad Air](https://github.com/teodelcastillo/react-weather-app/blob/main/weather-app/src/assets/ipad-mini.png)
+   ![Ipad Air](https://github.com/teodelcastillo/react-weather-app/blob/main/weather-app/src/assets/ipad-mini.png)
 
 ## Technologies Used
 
