@@ -1,6 +1,5 @@
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 
 }
@@ -22,25 +21,25 @@ body {
   margin: 2rem;
   border-radius: 1.5rem;
   padding: 2rem;
+  height: 90vh;
 
 }
 
 main {
 	flex-direction: column;
+  justify-content: center;
 }
 
 header{
 	display: flex;
-	margin: auto;
 	align-items: center;
-	justify-content: center;
 
 }
 
 header input{
 	height: 3rem;
-	width: 80vw;
-	max-width: 90%;
+  width: 80%;
+  margin: auto;
 	max-height: 10px;
 	min-height: 25px;
 	padding: 1rem;
@@ -49,7 +48,7 @@ header input{
 	color: #f8f8f8;
 	border: none;
 	border-radius: 1.5rem;
-	
+	position: sticky;
 
 }
 
@@ -61,10 +60,8 @@ header input:focus {
 
 main {
   flex: 1 1 100%;
-  padding: 2rem 2rem 4rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 .location .city {
@@ -97,8 +94,53 @@ main {
   text-shadow: 0 0.2rem rgba(0, 0, 0, 0.4);
 }
 .current .min-max {
+  display: flex;
   color: #eeeeee;
   font-size: 2rem;
   font-weight: 500;
   text-shadow: 0 0.2rem rgba(0, 0, 0, 0.4);
+  justify-content: center;
+}
+#slash {
+  margin: 0 15px  0;
+}
+
+#tempMin {
+  color: #77a9f5;
+}
+
+#tempMax {
+  color: #ec6060;
+}
+
+@media (max-width: 380px) {
+  .app-wrap {
+    margin: 1rem; 
+    padding: 1rem; 
+  }
+
+  header input {
+    width: 100%; 
+  }
+
+  .current .temperature {
+    font-size: 4rem; 
+    margin: 1rem 0; 
+  }
+
+  .current .weather,
+  .location .city,
+  .location .date,
+  .current .min-max,
+  #slash,
+  #tempMin,
+  #tempMax {
+    font-size: 1.5rem; 
+  }
+}
+
+@media (max-width: 299px){
+  .app-wrap{
+    display: none;
+  }
 }
