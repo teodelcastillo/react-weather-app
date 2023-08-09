@@ -16,19 +16,18 @@ A responsive weather application built with React that allows users to search fo
 4. Start the development server: `npm start`
 
 ## Screenshots
-
-###1. Home Page
+   1. Home Page
    ![Landing page before searching for locations](https://github.com/teodelcastillo/react-weather-app/blob/main/weather-app/src/assets/default.png)
 
-###2. Locations example
+   2. Locations example
    ![New York location as an example](https://github.com/teodelcastillo/react-weather-app/blob/main/weather-app/src/assets/ny.png)
 
-###3. Responsive examples
+   3. Responsive examples
 
-####* iPhone 12 Pro
+      iPhone 12 Pro
    ![Iphone 12](https://github.com/teodelcastillo/react-weather-app/blob/main/weather-app/src/assets/iphone12.png)
    
-####* IPad Air
+      IPad Air
    ![Ipad Air](https://github.com/teodelcastillo/react-weather-app/blob/main/weather-app/src/assets/ipad-mini.png)
 
 ## Technologies Used
