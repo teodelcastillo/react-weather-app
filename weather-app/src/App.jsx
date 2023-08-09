@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
+import SearchBox from './components/SearchBox';
+import Location from './components/Location';
+import WeatherInfo from './components/WeatherInfo';
 
 const api = {
   key: "2fa73590fd8b5a4c6e68098ad5625395",
@@ -9,47 +12,60 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-  
-  const search = (evt) => {
+
+  const search = async (evt) => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then(response => response.json())
-        .then(result => {
-          setWeather(result);
-          setQuery('');
-        });
+      try {
+        const response = await fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`);
+        const result = await response.json();
+        setWeather(result);
+        setQuery('');
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     }
-  }
+  };
+
 
   const dateBuilder = (d) => {
-    // Función dateBuilder aquí...
-  }
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    
+    const days = [
+      "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+    ];
+  
+    const day = days[d.getDay()];
+    const date = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+  
+    return `${day} ${date} ${month} ${year}`;
+  };
 
   return (
     <div className="app-wrap">
-      <header>
-        <input
-          type="text"
-          autoComplete="off"
-          className="search-box"
-          placeholder="Location"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={search}
-        />
-      </header>
+      <SearchBox
+        query={query}
+        onInputChange={(e) => setQuery(e.target.value)}
+        onKeyDown={search}
+      />
 
       <main>
-        <section className="location">
-          <div className="city">{`${weather.name}, ${weather.sys ? weather.sys.country : ''}`}</div>
-          <div className="date">{dateBuilder(new Date())}</div>
-        </section>
+        <Location
+          name={weather.name || 'Your location'}
+          country={weather.sys ? weather.sys.country : ''}
+          date={dateBuilder(new Date())}
+        />
 
-        <div className="current">
-          <div className="temperature">{`${Math.round(weather.main ? weather.main.temp : '')}°C`}</div>
-          <div className="weather">{weather.weather ? weather.weather[0].main : ''}</div>
-          <div className="min-max">{`${weather.main ? weather.main.temp_min : ''}°C / ${weather.main ? weather.main.temp_max : ''}°C`}</div>
-        </div>
+        <WeatherInfo
+          temperature={weather.main ? weather.main.temp : ''}
+          weatherMain={weather.weather ? weather.weather[0].main : ''}
+          tempMin={weather.main ? weather.main.temp_min : ''}
+          tempMax={weather.main ? weather.main.temp_max : ''}
+        />
       </main>
     </div>
   );
